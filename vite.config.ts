@@ -25,8 +25,8 @@ export default defineConfig({
       ],
       manifest: {
         start_url: ".",
-        name: "Reactify",
-        short_name: "Reactify",
+        name: "Wordle",
+        short_name: "Wordle",
         description: "Boilerplate to get started fast",
         theme_color: "#282c31",
         background_color: "#282c31",

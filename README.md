@@ -1,4 +1,4 @@
-# Reactify
+# Wordle
 
 Get started fast with
 

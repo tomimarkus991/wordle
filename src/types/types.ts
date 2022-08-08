@@ -9,3 +9,9 @@ export interface SelectOption {
   id: number;
   name: string;
 }
+
+export interface ISolution {
+  id: number;
+  word: string;
+  created_at: string;
+}
