@@ -22,19 +22,27 @@ export const useWordle = (solution: ISolution) => {
   // if user presses enter, add the new guess
   const handleKeyup = ({ key }: { key: string }) => {
     if (key === "Backspace") {
-      setCurrentGuess(currentGuess.slice(0, -1));
+      setCurrentGuess(prev => prev.slice(0, -1));
+      return;
     }
 
     if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < 5) {
-        setCurrentGuess(prevState => prevState + key);
+        setCurrentGuess(prev => prev + key);
       }
     }
-
-    console.log("s 1234", solution);
   };
 
-  console.log(setTurn, setGuesses, setHistory, setIsCorrect, history, addNewGuess, formatGuess);
+  console.log(
+    setTurn,
+    setGuesses,
+    setHistory,
+    setIsCorrect,
+    history,
+    addNewGuess,
+    formatGuess,
+    solution
+  );
 
   return { turn, currentGuess, guesses, isCorrect, handleKeyup };
 };

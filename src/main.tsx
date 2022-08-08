@@ -15,6 +15,7 @@ const queryClient = new QueryClient({
     queries: {
       retry: 0,
       refetchOnMount: false,
+      refetchOnWindowFocus: false,
       // onError: e => {
       //   const error = e as Error;
       //   console.log('error', error);
