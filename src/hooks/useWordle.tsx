@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { useApp } from "context";
 import { ISolution } from "types";
 
 export const useWordle = (solution: ISolution) => {
@@ -8,6 +9,8 @@ export const useWordle = (solution: ISolution) => {
   const [guesses, setGuesses] = useState<string[]>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState(false);
+
+  const { solutionLength } = useApp();
 
   // format a guess into an array of letter objects
   // e.g. [{key: 'a', color: 'yellow'}]
@@ -27,7 +30,7 @@ export const useWordle = (solution: ISolution) => {
     }
 
     if (/^[A-Za-z]$/.test(key)) {
-      if (currentGuess.length < 5) {
+      if (currentGuess.length < solutionLength) {
         setCurrentGuess(prev => prev + key);
       }
     }

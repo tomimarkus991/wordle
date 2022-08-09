@@ -15,13 +15,17 @@ type SolutionLengthType = 3 | 4 | 5 | 6;
 type SolutionLanguageType = "eng" | "est" | "ger";
 
 type InitialContextType = {
+  solutionLength: SolutionLengthType;
   setSolutionLength: Dispatch<SetStateAction<SolutionLengthType>>;
+  solutionLanguage: SolutionLanguageType;
   setSolutionLanguage: Dispatch<SetStateAction<SolutionLanguageType>>;
   table: string;
 };
 
 const initContextData: InitialContextType = {
+  solutionLength: 5,
   setSolutionLength: () => {},
+  solutionLanguage: "eng",
   setSolutionLanguage: () => {},
   table: "solutions_5_eng",
 };
@@ -46,6 +50,8 @@ export const AppProvider = ({ children }: ProviderProps) => {
         setSolutionLength,
         setSolutionLanguage,
         table,
+        solutionLanguage,
+        solutionLength,
       }}
     >
       {children}
