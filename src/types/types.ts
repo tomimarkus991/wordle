@@ -13,5 +13,4 @@ export interface SelectOption {
 export interface ISolution {
   id: number;
   word: string;
-  created_at: string;
 }
