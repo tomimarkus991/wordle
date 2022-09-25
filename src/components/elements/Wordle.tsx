@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Grid } from "components";
+import { Grid, Keypad } from "components";
 import { useWordle } from "hooks";
 import { ISolution } from "types";
 
@@ -27,6 +27,7 @@ export const Wordle = ({ solution }: Props) => {
       <div>Current guess: {currentGuess}</div>
       <div>Is Correct?: {isCorrect ? "correct" : "not correct"}</div>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}></Grid>
+      <Keypad />
     </div>
   );
 };
