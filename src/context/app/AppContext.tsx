@@ -26,12 +26,12 @@ type InitialContextType = {
 };
 
 const initContextData: InitialContextType = {
-  solutionLength: 5,
+  solutionLength: 5, // how many columns
   setSolutionLength: () => {},
   solutionLanguage: "eng",
   setSolutionLanguage: () => {},
   table: "solutions_5_eng",
-  numberOfGuesses: 6,
+  numberOfGuesses: 6, // how may rows
   setNumberOfGuesses: () => {},
 };
 

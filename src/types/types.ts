@@ -14,3 +14,8 @@ export interface ISolution {
   id: number;
   word: string;
 }
+
+export interface FormatedGuessType {
+  key: string;
+  color: "gray" | "green" | "yellow";
+}

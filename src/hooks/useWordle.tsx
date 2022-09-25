@@ -2,12 +2,7 @@ import { useState } from "react";
 
 import { useApp } from "context";
 import { useFetchIsWordInDB } from "hooks";
-import { ISolution } from "types";
-
-type FormatedGuessType = {
-  key: string;
-  color: "grey" | "green" | "yellow";
-};
+import { FormatedGuessType, ISolution } from "types";
 
 export const useWordle = (solution: ISolution) => {
   const { solutionLength, numberOfGuesses } = useApp();
@@ -24,7 +19,7 @@ export const useWordle = (solution: ISolution) => {
   const formatGuess = () => {
     const solutionArray: any[] = [...solution.word];
     const formatedGuess: FormatedGuessType[] = [...currentGuess].map(letter => {
-      return { key: letter, color: "grey" };
+      return { key: letter, color: "gray" };
     });
 
     // find any green letters
