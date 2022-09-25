@@ -33,7 +33,7 @@ export const Wordle = ({ solution }: Props) => {
   console.log(solution);
 
   return (
-    <div className="md:mt-20">
+    <div className="mt-10 md:mt-20">
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}></Grid>
       <Keypad usedKeys={usedKeys} handleKeyup={handleKeyup} />
       {isCorrect && <ConfettiEffect />}

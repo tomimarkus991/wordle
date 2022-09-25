@@ -28,9 +28,9 @@ export const letters = [
   { key: "y" },
   { key: "z" },
 ];
-
-export const keys = [
-  [
+export const keys = {
+  /** q w e r t y u i o p  */
+  normal1: [
     { key: "q" },
     { key: "w" },
     { key: "e" },
@@ -42,7 +42,8 @@ export const keys = [
     { key: "o" },
     { key: "p" },
   ],
-  [
+  /** a s d f g h j k l  */
+  normal2: [
     { key: "a" },
     { key: "s" },
     { key: "d" },
@@ -53,7 +54,18 @@ export const keys = [
     { key: "k" },
     { key: "l" },
   ],
-  [
+  /** z x c v b n m  */
+  normal3: [
+    { key: "z" },
+    { key: "x" },
+    { key: "c" },
+    { key: "v" },
+    { key: "b" },
+    { key: "n" },
+    { key: "m" },
+  ],
+  /** delete z x c v b n m enter */
+  normal3WithButtons: [
     { key: "delete" },
     { key: "z" },
     { key: "x" },
@@ -64,4 +76,29 @@ export const keys = [
     { key: "m" },
     { key: "enter" },
   ],
-];
+  /** delete enter  */
+  buttons: [{ key: "delete" }, { key: "enter" }],
+  /** q w e r t y u i o  */
+  mobile1: [
+    { key: "q" },
+    { key: "w" },
+    { key: "e" },
+    { key: "r" },
+    { key: "t" },
+    { key: "y" },
+    { key: "u" },
+    { key: "i" },
+    { key: "o" },
+  ],
+  /** z x c v b n m p  */
+  mobile3: [
+    { key: "z" },
+    { key: "x" },
+    { key: "c" },
+    { key: "v" },
+    { key: "b" },
+    { key: "n" },
+    { key: "m" },
+    { key: "p" },
+  ],
+};

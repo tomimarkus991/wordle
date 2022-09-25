@@ -24,6 +24,7 @@ export const realButtonVariants = {
 };
 
 export const realButtonSizes = {
+  xxs: "py-2 px-3 text-sm",
   xs: "py-2 px-5 text-sm",
   sm: "py-2 px-10 text-sm",
   md: "py-2 px-14 text-md",
