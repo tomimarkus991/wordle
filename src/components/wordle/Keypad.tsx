@@ -16,9 +16,7 @@ interface Props {
 export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
   const width = useWindowWidth();
 
-  const isMobile = width >= 500 ? false : true;
-
-  const createButton = (key: string) => {
+  const createButton = (key: string, displayValue: React.ReactNode) => {
     // @ts-ignore
     let color = usedKeys[key];
     if (key === "enter") {
@@ -29,12 +27,13 @@ export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
 
     return (
       <RealButton
+        id={key}
         onClick={(e: any) => {
-          let pressedKey = e.target.textContent;
+          let pressedKey = e.target.id;
 
-          if (e.target.textContent === "enter") {
+          if (pressedKey === "enter") {
             pressedKey = "Enter";
-          } else if (e.target.textContent === "delete") {
+          } else if (pressedKey === "delete") {
             pressedKey = "Backspace";
           }
 
@@ -45,59 +44,32 @@ export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
         variant={color}
         key={key}
       >
-        {key}
+        {displayValue}
       </RealButton>
     );
   };
 
-  const rowClass = "flex w-[100%] flex-row items-center justify-center space-x-1";
-  console.log(isMobile);
+  const rowClass = "flex w-[100%] flex-row items-center justify-center space-x-[0.2rem]";
 
   return (
     <div className="mt-10 flex w-[100%] flex-col items-center justify-center space-y-2 overflow-visible">
-      {!isMobile && (
-        <>
-          <div className={clsx(rowClass)}>
-            {keys.normal1.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-          <div className={clsx(rowClass)}>
-            {keys.normal2.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-          <div className={clsx(rowClass)}>
-            {keys.normal3WithButtons.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-        </>
-      )}
-      {isMobile && (
-        <>
-          <div className={clsx(rowClass)}>
-            {keys.mobile1.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-          <div className={clsx(rowClass)}>
-            {keys.normal2.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-          <div className={clsx(rowClass)}>
-            {keys.mobile3.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-          <div className={clsx(rowClass)}>
-            {keys.buttons.map(letter => {
-              return createButton(letter.key);
-            })}
-          </div>
-        </>
-      )}
+      <>
+        <div className={clsx(rowClass)}>
+          {keys.normal1.map(letter => {
+            return createButton(letter.key, letter.displayValue);
+          })}
+        </div>
+        <div className={clsx(rowClass)}>
+          {keys.normal2.map(letter => {
+            return createButton(letter.key, letter.displayValue);
+          })}
+        </div>
+        <div className={clsx(rowClass)}>
+          {keys.normal3WithButtons.map(letter => {
+            return createButton(letter.key, letter.displayValue);
+          })}
+        </div>
+      </>
     </div>
   );
 };

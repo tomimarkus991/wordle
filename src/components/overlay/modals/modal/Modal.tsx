@@ -35,7 +35,7 @@ export const Modal = ({ children, modalButton, open, setOpen, maxWidth = "xl" }:
             as={motion.div}
             key="modal-dialog"
             initialFocus={initialFocusRef}
-            className="fixed inset-0 z-[1000] flex select-none items-center justify-center"
+            className="fixed inset-0 z-[1030] flex select-none items-center justify-center"
             open={open}
             onClose={setOpen}
           >
