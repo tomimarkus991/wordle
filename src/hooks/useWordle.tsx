@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 import { useApp } from "context";
 import { useFetchIsWordInDB } from "hooks";
@@ -69,23 +70,23 @@ export const useWordle = (solution: ISolution) => {
     if (key === "Enter") {
       // if turn is > than 5, return
       if (turn > 5) {
-        console.log("game over!");
+        toast.error("Game over!");
         return;
       }
       // do not allow duplicate words
       if (history.includes(currentGuess)) {
-        console.log("You already tried that word");
+        toast.error("You already tried that word");
         return;
       }
       // word must be solutionLength long
       // when word is not equal to solutionLength, do not add guess
       if (currentGuess.length !== solutionLength) {
-        console.log(`Word must be ${solutionLength} letters long`);
+        toast.error(`Word must be ${solutionLength} letters long`);
         return;
       }
       // word must be in database to be added
       if ((await fetchData(currentGuess)) === false) {
-        console.log(`Word is not in database`);
+        toast.error(`Word is not in database`);
         return;
       }
 

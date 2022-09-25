@@ -11,8 +11,6 @@ export const Grid = ({ currentGuess, guesses, turn }: Props) => {
   return (
     <div>
       {guesses.map((guess, i) => {
-        console.log(turn, i);
-
         if (turn === i) {
           return <Row key={i} guess={guess} currentGuess={currentGuess} />;
         }
