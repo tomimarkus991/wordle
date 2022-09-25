@@ -1,5 +1,6 @@
 import clsx from "clsx";
 
+import { animations, AnimationWrapper } from "components";
 import { useApp } from "context";
 import { FormatedGuessType } from "types";
 
@@ -21,16 +22,17 @@ export const Row = ({ guess, currentGuess }: Props) => {
     return (
       <div className="flex justify-center">
         {currentGuessArray.map((letter, i) => (
-          <div
-            key={i}
-            className={clsx(
-              "m-[0.2rem] h-14 w-14 rounded-lg border border-solid border-gray-500 text-center text-[2.5rem] font-bold uppercase",
-              "flex items-center justify-center",
-              "text-gray-700"
-            )}
-          >
-            {letter}
-          </div>
+          <AnimationWrapper key={i} keyIndex="bounce-word" variants={animations.bounce}>
+            <div
+              className={clsx(
+                "m-[0.2rem] h-14 w-14 rounded-lg border border-solid border-gray-500 text-center text-[2.5rem] font-bold uppercase",
+                "flex items-center justify-center",
+                "text-gray-700"
+              )}
+            >
+              {letter}
+            </div>
+          </AnimationWrapper>
         ))}
         {emptyBoxes.map((_, i) => (
           <div

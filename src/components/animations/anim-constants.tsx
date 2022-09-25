@@ -248,6 +248,17 @@ const flip: Variants = {
     },
   },
 };
+const bounce: Variants = {
+  initial: { opacity: 0.9, scale: 1 },
+  animate: {
+    opacity: 1,
+    scale: [1.1, 1.2, 1],
+    transition: {
+      duration: 0.2,
+      ease: "easeInOut",
+    },
+  },
+};
 
 export const animations = {
   scaleAndRotation,
@@ -265,6 +276,7 @@ export const animations = {
   button,
   flip,
   flipMain,
+  bounce,
 };
 
 export const sidebarAnimations = {
