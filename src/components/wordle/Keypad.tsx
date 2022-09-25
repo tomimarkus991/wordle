@@ -20,7 +20,7 @@ export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
 
   const createButton = (key: string) => {
     // @ts-ignore
-    const color = usedKeys[key];
+    let color = usedKeys[key];
     return (
       <RealButton
         onClick={(e: any) => {
@@ -28,8 +28,10 @@ export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
 
           if (e.target.textContent === "enter") {
             pressedKey = "Enter";
+            color = "green";
           } else if (e.target.textContent === "delete") {
             pressedKey = "Backspace";
+            color = "red";
           }
 
           handleKeyup({ key: pressedKey });

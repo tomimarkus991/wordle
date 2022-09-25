@@ -47,6 +47,10 @@ input[type="number"] {
   }
 }
 
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .row > div.green {
   /* green 600 */
   --background: rgb(22 163 74);
