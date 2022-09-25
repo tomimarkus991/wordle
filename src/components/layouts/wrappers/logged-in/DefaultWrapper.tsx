@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import { NavbarBottom, NavbarTop, Sidebar } from "components";
+import { Sidebar } from "components";
 import { useSidebar } from "context";
 import { useIsMobile } from "hooks";
 
@@ -24,11 +24,11 @@ export const DefaultWrapper = ({ children, rightSide }: Props) => {
             )}
           >
             <div className="flex h-full w-full flex-col">
-              <NavbarTop
+              {/* <NavbarTop
                 user={{ id: "1", username: "Galaxy", email: "galaxy@gmail.com", avatar: null }}
-              />
+              /> */}
               <div className="px-4">{children}</div>
-              <NavbarBottom />
+              {/* <NavbarBottom /> */}
             </div>
           </div>
           <Sidebar />

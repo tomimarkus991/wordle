@@ -17,8 +17,6 @@ export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
     return (
       <RealButton
         onClick={(e: any) => {
-          console.log("1234 e", e);
-          console.log("1234", e.target.textContent);
           let pressedKey = e.target.textContent;
 
           if (e.target.textContent === "enter") {
@@ -40,18 +38,18 @@ export const Keypad = ({ usedKeys, handleKeyup }: Props) => {
   };
 
   return (
-    <div className="mx-5 mt-10 flex scale-50 flex-col items-center justify-center space-y-2 md:scale-100">
-      <div className="space-x-1">
+    <div className="mt-10 flex w-[100%] flex-col items-center justify-center space-y-2 overflow-visible">
+      <div className="flex w-[100%] flex-row items-center justify-center space-x-1">
         {keys[0].map(letter => {
           return createButton(letter.key);
         })}
       </div>
-      <div className="space-x-1">
+      <div className="flex w-[100%] flex-row items-center justify-center space-x-1">
         {keys[1].map(letter => {
           return createButton(letter.key);
         })}
       </div>
-      <div className="space-x-1">
+      <div className="flex w-[100%] flex-row items-center justify-center space-x-1">
         {keys[2].map(letter => {
           return createButton(letter.key);
         })}
