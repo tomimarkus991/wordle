@@ -14,6 +14,12 @@ export const useWordle = (solution: ISolution) => {
   const [guesses, setGuesses] = useState<FormatedGuessType[][]>([...Array(numberOfGuesses)]);
   const [history, setHistory] = useState<string[]>([]);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [usedKeys, setUsedKeys] = useState<
+    | {
+        key: "gray" | "yellow" | "green";
+      }
+    | Record<string, unknown>
+  >({}); // {a: 'gray', b: 'green', c: 'yellow'} etc
 
   // format a guess into an array of letter objects
   // e.g. [{key: 'a', color: 'yellow'}]
@@ -61,6 +67,34 @@ export const useWordle = (solution: ISolution) => {
 
     setTurn(prev => prev + 1);
 
+    // @ts-ignore
+    setUsedKeys(prev => {
+      const newKeys = { ...prev };
+
+      formatedGuess.forEach(letter => {
+        // @ts-ignore
+        const currentColor = newKeys[letter.key];
+
+        if (letter.color === "green") {
+          // @ts-ignore
+          newKeys[letter.key] = "green";
+          return;
+        }
+        if (letter.color === "yellow" && currentColor !== "green") {
+          // @ts-ignore
+          newKeys[letter.key] = "yellow";
+          return;
+        }
+        if (letter.color === "gray" && currentColor !== "green" && currentColor !== "yellow") {
+          // @ts-ignore
+          newKeys[letter.key] = "gray";
+          return;
+        }
+      });
+
+      return newKeys;
+    });
+
     setCurrentGuess("");
   };
 
@@ -68,25 +102,24 @@ export const useWordle = (solution: ISolution) => {
   // if user presses enter, add the new guess
   const handleKeyup = async ({ key }: { key: string }) => {
     if (key === "Enter") {
-      // if turn is > than 5, return
-      if (turn > 5) {
-        toast.error("Game over!");
+      // if turn is > than numberOfGuesses, return
+      if (turn >= numberOfGuesses) {
         return;
       }
       // do not allow duplicate words
       if (history.includes(currentGuess)) {
-        toast.error("You already tried that word");
+        toast.error("You already tried that word", { duration: 5000 });
         return;
       }
       // word must be solutionLength long
       // when word is not equal to solutionLength, do not add guess
       if (currentGuess.length !== solutionLength) {
-        toast.error(`Word must be ${solutionLength} letters long`);
+        toast.error(`Word must be ${solutionLength} letters long`, { duration: 5000 });
         return;
       }
       // word must be in database to be added
       if ((await fetchData(currentGuess)) === false) {
-        toast.error(`Word is not in database`);
+        toast.error(`Word is not in database`, { duration: 5000 });
         return;
       }
 
@@ -108,5 +141,5 @@ export const useWordle = (solution: ISolution) => {
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, handleKeyup, history };
+  return { turn, currentGuess, guesses, isCorrect, handleKeyup, history, usedKeys };
 };
