@@ -22,7 +22,12 @@ export const Row = ({ guess, currentGuess }: Props) => {
     return (
       <div className="flex justify-center">
         {currentGuessArray.map((letter, i) => (
-          <AnimationWrapper key={i} keyIndex="bounce-word" variants={animations.bounce}>
+          <AnimationWrapper
+            key={i}
+            keyIndex="bounce-word"
+            animateOnAllScreens
+            variants={animations.bounce}
+          >
             <div
               className={clsx(
                 "m-[0.2rem] h-14 w-14 rounded-lg border border-solid border-gray-500 text-center text-[2.5rem] font-bold uppercase",
