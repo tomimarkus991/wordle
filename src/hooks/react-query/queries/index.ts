@@ -1,1 +1,2 @@
-export * from "./useFetchRandomSolution5";
+export * from "./useFetchRandomSolution";
+export * from "./useFetchIsWordInDB";

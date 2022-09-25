@@ -4,7 +4,7 @@ import { useApp } from "context";
 import { ISolution } from "types";
 import { supabase } from "utils";
 
-export const useFetchRandomSolution5 = () => {
+export const useFetchRandomSolution = () => {
   //   const { showErrorToast } = useToast();
   const { table } = useApp();
 
@@ -31,5 +31,5 @@ export const useFetchRandomSolution5 = () => {
     return _data;
   };
 
-  return useQuery(["solution5"], () => fetchData());
+  return useQuery(["solution"], () => fetchData());
 };

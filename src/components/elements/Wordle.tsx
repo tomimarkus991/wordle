@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Wordle = ({ solution }: Props) => {
-  const { handleKeyup, currentGuess } = useWordle(solution);
+  const { handleKeyup, currentGuess, isCorrect, turn, history, guesses } = useWordle(solution);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
@@ -16,10 +16,15 @@ export const Wordle = ({ solution }: Props) => {
     return () => window.removeEventListener("keyup", handleKeyup);
   }, [handleKeyup]);
 
+  console.log("h 1234", history);
+  console.log("g 1234", guesses);
+
   return (
     <div>
+      <div>Turn: {turn + 1}</div>
       <div>Solution: {solution.word}</div>
       <div>Current guess: {currentGuess}</div>
+      <div>Is Correct?: {isCorrect ? "correct" : "not correct"}</div>
     </div>
   );
 };

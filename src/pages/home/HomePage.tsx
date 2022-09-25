@@ -1,8 +1,8 @@
 import { DefaultWrapper, Wordle } from "components";
-import { useFetchRandomSolution5 } from "hooks";
+import { useFetchRandomSolution } from "hooks";
 
 export const HomePage = () => {
-  const { data: solution } = useFetchRandomSolution5();
+  const { data: solution } = useFetchRandomSolution();
 
   return (
     <DefaultWrapper>

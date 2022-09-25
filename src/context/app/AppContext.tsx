@@ -12,6 +12,7 @@ type ProviderProps = {
 };
 
 type SolutionLengthType = 3 | 4 | 5 | 6;
+type NumberOfGuessesType = 2 | 3 | 4 | 5 | 6;
 type SolutionLanguageType = "eng" | "est" | "ger";
 
 type InitialContextType = {
@@ -20,6 +21,8 @@ type InitialContextType = {
   solutionLanguage: SolutionLanguageType;
   setSolutionLanguage: Dispatch<SetStateAction<SolutionLanguageType>>;
   table: string;
+  numberOfGuesses: NumberOfGuessesType;
+  setNumberOfGuesses: Dispatch<SetStateAction<NumberOfGuessesType>>;
 };
 
 const initContextData: InitialContextType = {
@@ -28,6 +31,8 @@ const initContextData: InitialContextType = {
   solutionLanguage: "eng",
   setSolutionLanguage: () => {},
   table: "solutions_5_eng",
+  numberOfGuesses: 6,
+  setNumberOfGuesses: () => {},
 };
 
 const AppContext = createContext(initContextData);
@@ -39,6 +44,7 @@ export const AppProvider = ({ children }: ProviderProps) => {
   const [solutionLength, setSolutionLength] = useState<SolutionLengthType>(5);
   const [solutionLanguage, setSolutionLanguage] = useState<SolutionLanguageType>("eng");
   const [table, setTable] = useState<string>(`${tableName}_${solutionLength}_${solutionLanguage}`);
+  const [numberOfGuesses, setNumberOfGuesses] = useState<NumberOfGuessesType>(6);
 
   useEffect(() => {
     setTable(`${tableName}_${solutionLength}_${solutionLanguage}`);
@@ -52,6 +58,8 @@ export const AppProvider = ({ children }: ProviderProps) => {
         table,
         solutionLanguage,
         solutionLength,
+        numberOfGuesses,
+        setNumberOfGuesses,
       }}
     >
       {children}
