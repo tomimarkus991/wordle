@@ -228,6 +228,27 @@ const extendedSidebar: Variants = {
   },
 };
 
+const flipMain: Variants = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const flip: Variants = {
+  animate: {
+    rotateX: [0, 90, 90, 0],
+    transition: {
+      duration: 0.5,
+      ease: "easeIn",
+      times: [0, 0.45, 0.55, 1],
+    },
+  },
+};
+
 export const animations = {
   scaleAndRotation,
   scaleAndFullRotation,
@@ -242,6 +263,8 @@ export const animations = {
   smallScale,
   smallScaleXs,
   button,
+  flip,
+  flipMain,
 };
 
 export const sidebarAnimations = {

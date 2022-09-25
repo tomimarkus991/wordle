@@ -9,13 +9,16 @@ interface Props {
 }
 
 export const Wordle = ({ solution }: Props) => {
-  const { handleKeyup, currentGuess, isCorrect, turn, history, guesses } = useWordle(solution);
+  const { handleKeyup, currentGuess, isCorrect, turn, guesses } = useWordle(solution);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
 
     return () => window.removeEventListener("keyup", handleKeyup);
   }, [handleKeyup]);
+
+  console.log("history", history);
+  console.log("isCorrect", isCorrect);
 
   return (
     <div>
