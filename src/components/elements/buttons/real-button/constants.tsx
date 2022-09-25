@@ -21,9 +21,9 @@ export const realButtonVariants = {
   gray: `bg-gray-500 text-[#f3f2f0] border-gray-600
     hover:text-white
     active:border-gray-500`,
-  red: `bg-red-500 text-[#f3f2f0] border-red-600
+  red: `bg-red-600 text-[#f3f2f0] border-red-800
     hover:text-white
-    active:border-red-500`,
+    active:border-red-600`,
 };
 
 export const realButtonSizes = {
